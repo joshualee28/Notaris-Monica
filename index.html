@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Kantor Notaris & PPAT - Dr. Monica Puspa Dewi Suganda Putri</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+        function dynamicFadeScroll() {
+            var reveals = document.querySelectorAll(".reveal, .about-card, .location-dashboard, .service-card");
+            
+            var windowHeight = window.innerHeight;
+
+            for (var i = 0; i < reveals.length; i++) {
+                if (!reveals[i].classList.contains('reveal')) {
+                    reveals[i].classList.add('reveal');
+                }
+                
+                var rect = reveals[i].getBoundingClientRect();
+                
+                // Kondisi ketika elemen berada di dalam area pandang (viewport)
+                // Elemen akan fade in saat masuk dari bawah atau atas
+                if (rect.top < windowHeight - 80 && rect.bottom > 80) {
+                    reveals[i].classList.add("active");
+                } 
+                // Kondisi ketika elemen keluar dari layar (baik ke atas maupun ke bawah)
+                // Elemen akan otomatis fade out
+                else {
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", dynamicFadeScroll);
+        window.addEventListener("load", dynamicFadeScroll);
+    </script>
+    <script>
+   function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
+        }
+
+        function smoothScrollTo(targetY, duration) {
+            const startY = window.pageYOffset;
+            const distance = targetY - startY;
+            let startTime = null;
+
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+                const ease = easeOutCubic(progress);
+
+                window.scrollTo(0, startY + (distance * ease));
+
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+            requestAnimationFrame(animation);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    // Memberikan sedikit ruang offset dari atas (misal 20px) agar tidak terlalu mepet
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 20;
+                    
+                    // Durasi ditingkatkan menjadi 1200ms (1.2 detik) agar transisinya sangat luwes dan mengalir
+                    smoothScrollTo(targetPosition, 1200);
+                }
+            });
+        });
+    </script>
+    <script>
+    function switchLanguage(lang) {
+        const btnIdn = document.getElementById('btn-idn');
+        const btnEng = document.getElementById('btn-eng');
+
+        if (lang === 'idn') {
+            btnIdn.classList.add('active');
+            btnEng.classList.remove('active');
+            // Logika untuk mengubah teks website ke Bahasa Indonesia bisa diletakkan di sini
+        } else {
+            btnEng.classList.add('active');
+            btnIdn.classList.remove('active');
+            // Logika untuk mengubah teks website ke Bahasa Inggris bisa diletakkan di sini
+        }
+    }
+</script>
+<body>
+
+   <header class="navbar">
+    <div class="container nav-container">
+        <a href="#" class="brand">
+            <img src="logo.png" alt="Logo">
+        </a>
+        
+        <nav class="nav-menu">
+        <a href="#tentang-kami">TENTANG KAMI</a>
+        <a href="#layanan">LAYANAN</a>
+        <a href="#lokasi">LOKASI</a>
+        <div class="language-switcher">
+        <button class="lang-btn active" id="btn-idn" onclick="switchLanguage('idn')">IDN</button>
+        <span class="lang-divider">|</span>
+        <button class="lang-btn" id="btn-eng" onclick="switchLanguage('eng')">ENG</button>
+    </div>
+</nav>
+    
+</nav>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">...</button>
+    </div>
+</header>
+</nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div id="particles-js"></div>
+        
+        <div class="container hero-content">
+            <h1>Kantor Notaris & PPAT <span>Dr. Monica Puspa Dewi Suganda Putri, S.H., M.Kn., M.H.</span></h1>
+            
+            <!-- Kotak Utama Rekanan -->
+            <div class="hero-stats-box">
+                <div class="stats-title">REKANAN</div>
+                
+                <div class="stats-grid">
+    <!-- Kartu Perbankan (Bisa diklik) -->
+  <div class="stats-grid">
+    <!-- Kartu Perbankan -->
+    <a href="#section-bank" class="stat-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <span class="stat-label">PERBANKAN</span>
+        <span class="stat-number">15+</span>
+    </a>
+
+    <!-- Kartu Corporate (Menuju section corporate) -->
+    <a href="#section-corporate" class="stat-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <span class="stat-label">CORPORATE</span>
+        <span class="stat-number">17+</span>
+    </a>
+
+    <!-- Kartu Developer (Menuju section developer) -->
+    <a href="#section-developer" class="stat-card" style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+        <span class="stat-label">DEVELOPER</span>
+        <span class="stat-number">10+</span>
+    </a>
+</div>
+</div>
+            </div>
+        </div>
+
+        <!-- Garis Kuning Berjalan (Pastikan ditaruh di sini, tepat sebelum penutup </section>) -->
+        <div class="running-text-container">
+            <div class="running-text-track">
+                <span>LAYANAN PEMBUATAN AKTA OTENTIK</span>
+                <span class="dot-icon">✦</span>
+                <span>PENDIRIAN PT, CV, & YAYASAN</span>
+                <span class="dot-icon">✦</span>
+                <span>KONSULTASI HUKUM & PERTANAHAN (PPAT)</span>
+                <span class="dot-icon">✦</span>
+                <span>AKTA JUAL BELI & HAK TANGGUNGAN</span>
+                <span class="dot-icon">✦</span>
+                <!-- Duplikasi teks untuk kelancaran loop animasi -->
+                <span>LAYANAN PEMBUATAN AKTA OTENTIK</span>
+                <span class="dot-icon">✦</span>
+                <span>PENDIRIAN PT, CV, & YAYASAN</span>
+                <span class="dot-icon">✦</span>
+                <span>KONSULTASI HUKUM & PERTANAHAN (PPAT)</span>
+                <span class="dot-icon">✦</span>
+                <span>AKTA JUAL BELI & HAK TANGGUNGAN</span>
+                <span class="dot-icon">✦</span>
+            </div>
+        </div>
+    </section>
+    <!-- Tentang Kami Section -->
+    <section id="tentang-kami" class="about-section">
+        <div class="container about-container">
+            <div class="about-card">
+                <h2>TENTANG KAMI</h2>
+                <p class="about-subtitle">Kantor Notaris & PPAT Dr. Monica Puspa Dewi Suganda Putri, S.H., M.Kn., M.H.</p>
+                <div class="about-divider"></div>
+                <p class="about-text">
+                    Berdiri sejak 2018, Kantor Notaris & PPAT Dr. Monica Puspa Dewi Suganda Putri, S.H., M.Kn., M.H. berkomitmen memberikan pelayanan hukum yang profesional, akurat, dan berintegritas.<br> <br> Kepercayaan tersebut dibuktikan melalui sinergi luas dengan seluruh bank milik negara (BUMN), berbagai bank swasta, BPR, koperasi, serta puluhan korporasi dan developer terkemuka. Dengan standar layanan yang mengutamakan kepastian hukum, kami berpengalaman menangani pengurusan berkas dan dokumen mulai dari lingkup lokal di dalam provinsi hingga skala internasional (luar negeri).
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Section Rekanan / Perbankan -->
+    <section id="rekanan" class="rekanan-section dynamic-fade">
+    <div class="container">
+        <div class="section-header text-center">
+            <h2 class="section-title">REKANAN</h2>
+            <p class="section-subtitle">Didukung oleh jaringan perbankan dan lembaga keuangan terkemuka</p>
+        </div>
+
+            <!-- Kategori: Perbankan -->
+           <div id="section-bank" class="rekanan-category">
+                <h3 class="category-title">Perbankan & Lembaga Keuangan</h3>
+                <div class="partners-grid">
+                    <!-- Kartu Logo 1: BRI -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/bri.png" alt="Bank BRI"> <!-- Sesuaikan nama file gambar logo Anda -->
+                        </div>
+                        <span class="partner-name">Bank BRI</span>
+                    </div>
+
+                    <!-- Kartu Logo 2: BTN -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/btn.png" alt="Bank BTN">
+                        </div>
+                        <span class="partner-name">Bank BTN</span>
+                    </div>
+
+                    <!-- Kartu Logo 3: BSI (BSN) -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/bsn.png" alt="Bank BSI">
+                        </div>
+                        <span class="partner-name">Bank BSI</span>
+                    </div>
+
+                    <!-- Kartu Logo 4: BNI -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/bni.png" alt="Bank BNI">
+                        </div>
+                        <span class="partner-name">Bank BNI</span>
+                    </div>
+
+                    <!-- Kartu Logo 5: Mandiri -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/mandiri.png" alt="Bank Mandiri">
+                        </div>
+                        <span class="partner-name">Bank Mandiri</span>
+                    </div>
+
+                    <!-- Kartu Logo 6: BCA -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/bca.png" alt="Bank BCA">
+                        </div>
+                        <span class="partner-name">Bank BCA</span>
+                    </div>
+
+                    <!-- Kartu Logo 7: DKI Syariah -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/dki.jpg" alt="Bank DKI Syariah">
+                        </div>
+                        <span class="partner-name">Bank DKI Syariah</span>
+                    </div>
+
+                    <!-- Kartu Logo 8: Nobu Bank -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/nobu.png" alt="Nobu Bank">
+                        </div>
+                        <span class="partner-name">Nobu Bank</span>
+                    </div>
+
+                    <!-- Kartu Logo 9: Bank BJB -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/bjb.png" alt="Bank BJB">
+                        </div>
+                        <span class="partner-name">Bank BJB</span>
+                    </div>
+
+                    <!-- 10. FIFGROUP -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/FIF.jpg" alt="FIFGROUP">
+                        </div>
+                        <span class="partner-name">FIF GROUP</span>
+                    </div>
+
+                    <!-- 11. Multindo -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/MULTINDO.jpg" alt="Multindo">
+                        </div>
+                        <span class="partner-name">Multindo</span>
+                    </div>
+
+                    <!-- 12. Orix -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/ORIX.png" alt="Orix">
+                        </div>
+                        <span class="partner-name">PT Orix</span>
+                    </div>
+
+                    <!-- 13. Jamkrindo -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/JAMKRINDO.webp" alt="Jamkrindo">
+                        </div>
+                        <span class="partner-name">Jamkrindo</span>
+                    </div>
+
+                    <!-- 14. Askrindo -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/ASKRINDO.png" alt="Askrindo">
+                        </div>
+                        <span class="partner-name">Askrindo</span>
+                    </div>
+
+                    <!-- Kartu Logo 10: BPR Kusuma Sumbing -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/ksb.png" alt="BPR Kusuma Sumbing">
+                        </div>
+                        <span class="partner-name">BPR Kusuma Sumbing</span>
+                    </div>
+
+                    <!-- Kartu Logo 11: BPR Restu Makmur Mranggen -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/rmm.png" alt="BPR Restu Makmur Mranggen">
+                        </div>
+                        <span class="partner-name">BPR Restu Makmur Mranggen</span>
+                    </div>
+
+                    <!-- Kartu Logo 12: BPR Saribumi -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/saribumi.png" alt="BPR Saribumi">
+                        </div>
+                        <span class="partner-name">BPR Saribumi</span>
+                    </div>
+
+                    <!-- Kartu Logo 13: BPR Artamas -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/artamas.jpeg" alt="BPR Artamas">
+                        </div>
+                        <span class="partner-name">BPR Artamas</span>
+                    </div>
+
+                    <!-- Kartu Logo 14: BPR Argo Dana -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/argo.jpeg" alt="BPR Argo Dana">
+                        </div>
+                        <span class="partner-name">BPR Argo Dana</span>
+                    </div>
+
+                    <!-- Kartu Logo 15: BPR Agung Sejahtera -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/as.png" alt="BPR Agung Sejahtera">
+                        </div>
+                        <span class="partner-name">BPR Agung Sejahtera</span>
+                    </div>
+
+                    <!-- Kartu Logo 16: BPRS Artha Amanah Ummat -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/artha.jpeg" alt="BPRS Artha Amanah Ummat">
+                        </div>
+                        <span class="partner-name">BPRS Artha Amanah Ummat</span>
+                    </div>
+
+                    <!-- Kartu Logo 17: KSPPS Binama -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/binama.webp" alt="KSPPS Binama">
+                        </div>
+                        <span class="partner-name">KSPPS Binama</span>
+                    </div>
+
+                    <!-- Kartu Logo 18: KSPPS BMT As-Salam -->
+                    <div class="partner-card">
+                        <div class="partner-logo-box">
+                            <img src="assets/as salam.png" alt="KSPPS BMT As-Salam">
+                        </div>
+                        <span class="partner-name">KSPPS BMT As-Salam</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Kategori: Developer Properti -->
+        <div id="section-developer" class="rekanan-category">
+            <h3 class="category-title">Developer Properti</h3>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/bsb.jpeg" alt="BSB City">
+                    </div>
+                    <span class="partner-name">BSB City</span>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/blessing.png" alt="Blessing Property">
+                    </div>
+                    <span class="partner-name">Blessing Property</span>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/interflow.png" alt="Interflow Property">
+                    </div>
+                    <span class="partner-name">Interflow Property</span>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/kini.jpg" alt="PT Kini Jaya Indah">
+                    </div>
+                    <span class="partner-name">PT Kini Jaya Indah</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kategori: Korporasi & Perusahaan Rekanan -->
+        <div id="section-corporate" class="rekanan-category">
+            <h3 class="category-title">Korporasi & Perusahaan Rekanan</h3>
+            <div class="partners-grid">
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/nazura.png" alt="PT Nazura">
+                    </div>
+                    <span class="partner-name">PT Nazura Putri Cemerlang</span>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/arisa.webp" alt="Arisa">
+                    </div>
+                    <span class="partner-name">PT Arisamandiri Pratama</span>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/techpack.jpeg" alt="PT.Techpack Asia">
+                    </div>
+                    <span class="partner-name">PT Techpack Asia</span>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/paten.jpeg" alt="Paten Tour & Travel">
+                    </div>
+                    <span class="partner-name">Paten Tour & Travel</span>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/abi.jpeg" alt="Abi Vape">
+                    </div>
+                    <span class="partner-name">Abi Vape</span>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/wahid.png" alt="PT Wahid">
+                    </div>
+                    <span class="partner-name">PT Putra Wahid Pratama</span>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/gantari.jpeg" alt="CV Gantari">
+                    </div>
+                    <span class="partner-name">CV Gantari</span>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-logo-box">
+                        <img src="assets/ibis.jpeg" alt="Ibis Styles">
+                    </div>
+                    <span class="partner-name">Ibis Styles</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Layanan Section -->
+    <section id="layanan" class="layanan-section">
+    <div class="container">
+        
+        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+            <h2 class="section-title">LAYANAN KAMI</h2>
+        </div>
+        <div class="layanan-grid fade-scroll">
+            
+            <!-- KOTAK 1: KENOTARIATAN -->
+<div class="layanan-card">
+    <h3 class="layanan-category">Kenotariatan</h3>
+    <ul class="layanan-list">
+        <li><a href="syarat-pt.html" target="_blank">Pendirian PT & CV</a></li>
+        <li><a href="syarat-perjanjian.html" target="_blank">Pembuatan Perjanjian</a></li>
+        <li><a href="syarat-wasiat.html" target="_blank">Surat Wasiat (Testamen)</a></li>
+        <li><a href="syarat-legalisasi.html" target="_blank">Legalisasi & Waarmerking</a></li>
+    </ul>
+</div>
+
+<!-- KOTAK 2: PPAT -->
+<div class="layanan-card">
+    <h3 class="layanan-category">PPAT</h3>
+    <ul class="layanan-list">
+        <li><a href="syarat-ajb.html" target="_blank">Akta Jual Beli (AJB)</a></li>
+        <li><a href="syarat-hibah.html" target="_blank">Akta Hibah</a></li>
+        <li><a href="syarat-ht.html" target="_blank">Pemberian Hak Tanggungan</a></li>
+        <li><a href="syarat-balik nama.html" target="_blank">Balik Nama Sertifikat</a></li>
+    </ul>
+</div>
+            <!-- KOTAK 3: LEGAL -->
+            <div class="layanan-card">
+                <h3 class="layanan-category">Legal</h3>
+                <ul class="layanan-list">
+                    <li><a href="syarat-somasi.html" target="_blank">Pembuatan Somasi</a></li>
+                    <li><a href="syarat-legal-opinion.html" target="_blank">Legal Opinion</a></li>
+                    <li><a href="syarat-konsultasi.html" target="_blank">Konsultasi Hukum</a></li>
+                    <li><a href="syarat-izin usaha.html" target="_blank">Pengurusan Izin Usaha</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Lokasi Section -->
+    <section id="lokasi" class="location-section">
+        <div class="container location-container">
+            <h2 class="section-title">LOKASI KANTOR</h2>
+            
+            <div class="location-dashboard">
+                <!-- KOLOM KIRI: Informasi Alamat & Tombol Aksi -->
+                <div class="location-info-card">
+                    <div class="live-badge">
+                        <span class="pulse-dot"></span> LIVE STATION • KANTOR NOTARIS & PPAT
+                    </div>
+                    
+                    <div class="office-title-box">
+                        <div class="office-icon">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <div>
+                            <h3>Dr. Monica Puspa Dewi S.</h3>
+                            <p>Kantor Notaris & PPAT Resmi</p>
+                        </div>
+                    </div>
+
+                    <div class="address-box">
+                        <div class="address-header">
+                            <span>ALAMAT RESMI</span>
+                            <button onclick="navigator.clipboard.writeText('Jl. Raya Purwodadi - Semarang No.KM.18, Sengor, Kuripan, Kec. Karangawen, Kabupaten Demak, Jawa Tengah 59566')" class="copy-btn">
+                                <i class="fa-regular fa-copy"></i> Salin
+                            </button>
+                        </div>
+                        <p class="address-text">
+                            Jl. Raya Purwodadi - Semarang No.KM.18, RW.6, Sengor, Kuripan, Kec. Karangawen, Kabupaten Demak, Jawa Tengah 59566
+                        </p>
+                    </div>
+
+                    <div class="coord-box">
+                        <div class="coord-item">
+                            <span class="coord-label">LATITUDE</span>
+                            <span class="coord-value">-7.0345° S</span>
+                        </div>
+                        <div class="coord-item">
+                            <span class="coord-label">LONGITUDE</span>
+                            <span class="coord-value">110.5521° E</span>
+                        </div>
+                    </div>
+
+                   <div class="location-buttons">
+                        <a href="https://www.google.com/maps/search/?api=1&query=-7.0373594,110.5549462" target="_blank" class="btn-yellow-map">
+                            <i class="fa-solid fa-location-arrow"></i> Buka di Google Maps
+                        </a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=-7.0373594,110.5549462" target="_blank" class="btn-outline-map">
+                            <i class="fa-solid fa-compass"></i> Petunjuk Arah
+                        </a>
+                    </div>
+
+                <div class="map-iframe-container">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=-7.0373594,110.5549462&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+        </div>
+    </section>
+    <a href="https://wa.me/6287731646565?text=Halo%2C%20saya%20ingin%20konsultasi%20mengenai%20layanan%20Notaris%20dan%20PPAT." target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>Konsultasi</span>
+    </a>
+    <!-- Footer -->
+   <!-- Footer Section -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <strong>Kantor Notaris & PPAT Dr. Monica Puspa Dewi Suganda Putri, S.H., M.Kn., M.H.</strong>
+                <p>Jl. Raya Purwodadi - Semarang No.KM.18, RW.6, Sengor, Kuripan, <br>Kec. Karangawen, Kabupaten Demak, Jawa Tengah 59566</p>
+                <p>Jam Operasional: Senin - Jumat (08.00 - 17.00 WIB) | Sabtu (08.00 - 14.00 WIB)</p>
+            </div>
+            <div class="footer-trademark">
+                <p>&copy; 2026 Kantor Notaris & PPAT. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
